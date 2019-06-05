@@ -39,3 +39,31 @@ docker exec -it test bash
 tail -f ./logs.txt
 
 Secret message is: "Docker is easy"
+
+## Part 1.5
+
+➜ Part1 git:(master) docker run -d -it --name ubuntu ubuntu
+
+➜ Part1 git:(master) docker exec -it ubuntu bash
+
+root@09a8faf32492:/# apt-get update
+
+root@09a8faf32492:/# apt-get install curl
+
+root@09a8faf32492:/# read escape sequence
+
+➜ Part1 git:(master) docker exec -it ubuntu sh -c 'echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website;'
+
+Input website:
+
+helsinki.fi
+
+Searching..
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://www.helsinki.fi/">here</a>.</p>
+</body></html>
