@@ -19,3 +19,13 @@ CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 REPOSITORY TAG IMAGE ID CREATED SIZE
 
 ➜ Part1 git:(master) ✗
+
+# Part 1.3
+
+➜ Part1 git:(master) docker run -it devopsdockeruh/pull_exercise
+
+Give me the password: basics
+
+You found the correct password. Secret message is:
+
+"This is the secret message"
