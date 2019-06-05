@@ -1,4 +1,4 @@
-# Part 1.1
+## Part 1.1
 
 CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 
@@ -8,7 +8,7 @@ a1b730915024 nginx "nginx -g 'daemon of…" 14 seconds ago Up 13 seconds 80/tcp 
 
 1aa789e34b2d nginx "nginx -g 'daemon of…" About a minute ago Exited (0) 2 seconds ago laughing_borg
 
-# Part 1.2
+## Part 1.2
 
 ➜ Part1 git:(master) ✗ docker ps -a
 
@@ -20,7 +20,7 @@ REPOSITORY TAG IMAGE ID CREATED SIZE
 
 ➜ Part1 git:(master) ✗
 
-# Part 1.3
+## Part 1.3
 
 ➜ Part1 git:(master) docker run -it devopsdockeruh/pull_exercise
 
@@ -29,3 +29,13 @@ Give me the password: basics
 You found the correct password. Secret message is:
 
 "This is the secret message"
+
+## Part 1.4
+
+docker run -d --name test devopsdockeruh/exec_bash_exercise
+
+docker exec -it test bash
+
+tail -f ./logs.txt
+
+Secret message is: "Docker is easy"
