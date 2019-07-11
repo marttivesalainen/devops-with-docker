@@ -67,6 +67,38 @@ Searching..
 </body></html>
 ```
 
+## Part 1.6
+
+FROM devopsdockeruh/overwrite_cmd_exercise
+
+WORKDIR /usr/app
+
+COPY . .
+
+RUN node index -c 0
+
+CMD ["/bin/bash"]
+
+## Part 1.7
+
+FROM ubuntu
+
+WORKDIR /usr/app
+
+COPY . .
+
+RUN apt-get update && apt-get install -y curl
+
+CMD ["/bin/bash"]
+
+CMD echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website;
+
+## Part 1.8
+
+touch logs.txt
+
+docker run -v \$PWD/logs.txt:/usr/app/logs.txt devopsdockeruh/first_volume_exercise
+
 ## Part 1.9
 
 docker run -p 80:80 devopsdockeruh/ports_exercise
