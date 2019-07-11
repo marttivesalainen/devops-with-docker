@@ -123,7 +123,6 @@ COPY . .
 CMD npm start
 ```
 
-```
 docker build -t frontend-example-docker .
+
 docker run -p 5000:5000 frontend-example-docker
-```
