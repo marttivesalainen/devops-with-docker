@@ -58,7 +58,8 @@ helsinki.fi
 
 Searching..
 
-```<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+```
+!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
 <html><head>
 <title>301 Moved Permanently</title>
 </head><body>
@@ -71,7 +72,8 @@ Searching..
 
 See [Dockerfile](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part1/1.6)
 
-```FROM devopsdockeruh/overwrite_cmd_exercise
+```
+FROM devopsdockeruh/overwrite_cmd_exercise
 
 WORKDIR /usr/app
 COPY . .
@@ -84,7 +86,8 @@ CMD ["/bin/bash"]
 
 See [Dockerfile](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part1/1.7)
 
-```FROM ubuntu
+```
+FROM ubuntu
 
 WORKDIR /usr/app
 COPY . .
