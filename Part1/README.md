@@ -10,19 +10,17 @@ a1b730915024 nginx "nginx -g 'daemon of…" 14 seconds ago Up 13 seconds 80/tcp 
 
 ## Part 1.2
 
-➜ Part1 git:(master) ✗ docker ps -a
+docker ps -a
 
 CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 
-➜ Part1 git:(master) ✗ docker images
+docker images
 
 REPOSITORY TAG IMAGE ID CREATED SIZE
 
-➜ Part1 git:(master) ✗
-
 ## Part 1.3
 
-➜ Part1 git:(master) docker run -it devopsdockeruh/pull_exercise
+docker run -it devopsdockeruh/pull_exercise
 
 Give me the password: basics
 
@@ -42,9 +40,9 @@ Secret message is: "Docker is easy"
 
 ## Part 1.5
 
-➜ Part1 git:(master) docker run -d -it --name ubuntu ubuntu
+docker run -d -it --name ubuntu ubuntu
 
-➜ Part1 git:(master) docker exec -it ubuntu bash
+docker exec -it ubuntu bash
 
 root@09a8faf32492:/# apt-get update
 
@@ -52,7 +50,7 @@ root@09a8faf32492:/# apt-get install curl
 
 root@09a8faf32492:/# read escape sequence
 
-➜ Part1 git:(master) docker exec -it ubuntu sh -c 'echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website;'
+docker exec -it ubuntu sh -c 'echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website;'
 
 Input website:
 
@@ -68,3 +66,7 @@ Searching..
 <p>The document has moved <a href="http://www.helsinki.fi/">here</a>.</p>
 </body></html>
 ```
+
+## Part 1.9
+
+docker run -p 80:80 devopsdockeruh/ports_exercise
