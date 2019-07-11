@@ -109,6 +109,21 @@ docker run -v \$PWD/logs.txt:/usr/app/logs.txt devopsdockeruh/first_volume_exerc
 
 docker run -p 80:80 devopsdockeruh/ports_exercise
 
+## Part 1.10
+
+See [Dockerfile](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part1/1.10) and instructions.
+
+```
+FROM node:alpine
+
+EXPOSE 5000
+WORKDIR /usr/app
+COPY . .
+
+CMD npm start
 ```
 
+```
+docker build -t frontend-example-docker .
+docker run -p 5000:5000 frontend-example-docker
 ```
