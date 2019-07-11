@@ -69,6 +69,8 @@ Searching..
 
 ## Part 1.6
 
+See [Dockerfile](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part1/1.6)
+
 FROM devopsdockeruh/overwrite_cmd_exercise
 
 WORKDIR /usr/app
@@ -80,6 +82,8 @@ RUN node index -c 0
 CMD ["/bin/bash"]
 
 ## Part 1.7
+
+See [Dockerfile](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part1/1.7)
 
 FROM ubuntu
 
@@ -94,6 +98,8 @@ CMD ["/bin/bash"]
 CMD echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website;
 
 ## Part 1.8
+
+See [Log file](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part1/1.8)
 
 touch logs.txt
 
