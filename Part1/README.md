@@ -1,3 +1,7 @@
+# Part 1
+
+From this README you'll find all my answers to the exercises of part 1. Some exercises are also stored in their own directories with Dockerfiles and/or additional information. However you should be able to check my answers from this README.
+
 ## Part 1.1
 
 CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
@@ -99,7 +103,7 @@ CMD echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http:
 
 ## Part 1.8
 
-See [Log file](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part1/1.8)
+See [Log file and README](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part1/1.8)
 
 touch logs.txt
 
@@ -111,7 +115,7 @@ docker run -p 80:80 devopsdockeruh/ports_exercise
 
 ## Part 1.10
 
-See [Dockerfile](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part1/1.10) and instructions.
+See [Dockerfile and README](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part1/1.10).
 
 ```
 FROM node:alpine
@@ -126,3 +130,34 @@ CMD npm start
 docker build -t frontend-example-docker .
 
 docker run -p 5000:5000 frontend-example-docker
+
+## Part 1.11
+
+See [Dockerfile and README](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part1/1.11)
+
+First clone or download [this repo](https://github.com/docker-hy/backend-example-docker) and follow the installing instructions.
+
+Place the Dockerfile in the root of project and run
+
+```
+docker build -t backend-example-docker .
+docker run -p 8000:8000 -v $PWD/logs.txt:/usr/app/logs.txt backend-example-docker
+```
+
+## Part 1.12
+
+See [Dockerfile and README](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part1/1.12)
+
+First clone or download [this](https://github.com/docker-hy/backend-example-docker) and [that](https://github.com/docker-hy/frontend-example-docker) and follow the installing instructions from both projects.
+
+Place the Dockerfiles (backend & frontend) in the roots of corresponding projects and run:
+
+```
+docker build -t backend-example-docker .
+docker run -p 8000:8000 -v $PWD/logs.txt:/usr/app/logs.txt backend-example-docker
+```
+
+```
+docker build -t frontend-example-docker .
+docker run -p 5000:5000 frontend-example-docker
+```
