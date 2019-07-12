@@ -14,7 +14,7 @@ a1b730915024 nginx "nginx -g 'daemon of…" 14 seconds ago Up 13 seconds 80/tcp 
 
 ## Part 1.2
 
-docker ps -a
+`docker ps -a`
 
 CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 
@@ -24,7 +24,7 @@ REPOSITORY TAG IMAGE ID CREATED SIZE
 
 ## Part 1.3
 
-docker run -it devopsdockeruh/pull_exercise
+`docker run -it devopsdockeruh/pull_exercise`
 
 Give me the password: basics
 
@@ -34,19 +34,19 @@ You found the correct password. Secret message is:
 
 ## Part 1.4
 
-docker run -d --name test devopsdockeruh/exec_bash_exercise
+`docker run -d --name test devopsdockeruh/exec_bash_exercise`
 
-docker exec -it test bash
+`docker exec -it test bash`
 
-tail -f ./logs.txt
+`tail -f ./logs.txt`
 
 Secret message is: "Docker is easy"
 
 ## Part 1.5
 
-docker run -d -it --name ubuntu ubuntu
+`docker run -d -it --name ubuntu ubuntu`
 
-docker exec -it ubuntu bash
+`docker exec -it ubuntu bash`
 
 root@09a8faf32492:/# apt-get update
 
@@ -54,7 +54,7 @@ root@09a8faf32492:/# apt-get install curl
 
 root@09a8faf32492:/# read escape sequence
 
-docker exec -it ubuntu sh -c 'echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website;'
+`docker exec -it ubuntu sh -c 'echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website;'`
 
 Input website:
 
@@ -97,21 +97,24 @@ WORKDIR /usr/app
 COPY . .
 RUN apt-get update && apt-get install -y curl
 
-CMD ["/bin/bash"]
 CMD echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website;
 ```
+
+`docker build -t curler .`
+
+`docker run -it curler`
 
 ## Part 1.8
 
 See [Log file and README](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part1/1.8)
 
-touch logs.txt
+`touch logs.txt`
 
-docker run -v \$PWD/logs.txt:/usr/app/logs.txt devopsdockeruh/first_volume_exercise
+`docker run -v \$PWD/logs.txt:/usr/app/logs.txt devopsdockeruh/first_volume_exercise`
 
 ## Part 1.9
 
-docker run -p 80:80 devopsdockeruh/ports_exercise
+`docker run -p 80:80 devopsdockeruh/ports_exercise`
 
 ## Part 1.10
 
@@ -127,9 +130,9 @@ COPY . .
 CMD npm start
 ```
 
-docker build -t frontend-example-docker .
+`docker build -t frontend-example-docker .`
 
-docker run -p 5000:5000 frontend-example-docker
+`docker run -p 5000:5000 frontend-example-docker`
 
 ## Part 1.11
 
@@ -149,9 +152,9 @@ COPY . .
 CMD npm start
 ```
 
-docker build -t backend-example-docker .
+`docker build -t backend-example-docker .`
 
-docker run -p 8000:8000 -v \$PWD/logs.txt:/usr/app/logs.txt backend-example-docker
+`docker run -p 8000:8000 -v \$PWD/logs.txt:/usr/app/logs.txt backend-example-docker`
 
 ## Part 1.12
 
