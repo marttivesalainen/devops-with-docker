@@ -48,11 +48,11 @@ Secret message is: "Docker is easy"
 
 `docker exec -it ubuntu bash`
 
-root@09a8faf32492:/# apt-get update
+root@09a8faf32492:/# `apt-get update`
 
-root@09a8faf32492:/# apt-get install curl
+root@09a8faf32492:/# `apt-get install curl`
 
-root@09a8faf32492:/# read escape sequence
+root@09a8faf32492:/# `read escape sequence`
 
 `docker exec -it ubuntu sh -c 'echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website;'`
 
@@ -162,7 +162,7 @@ See [Dockerfile and README](https://github.com/marttivesalainen/devops-with-dock
 
 First clone or download [this](https://github.com/docker-hy/backend-example-docker) and [that](https://github.com/docker-hy/frontend-example-docker) and follow the installing instructions from both projects.
 
-Place the Dockerfiles (backend & frontend) in the roots of corresponding projects, then run the docker magic below.
+Place the Dockerfiles (backend & frontend) in the roots of corresponding projects, then run the docker commands below.
 
 Backend Dockerfile
 
@@ -203,3 +203,56 @@ Frontend
 `docker build -t frontend-example-docker .`
 
 `docker run -p 5000:5000 frontend-example-docker`
+
+## Part 1.13
+
+First clone or download [this repo](https://github.com/docker-hy/spring-example-project).
+
+Place the Dockerfile in the root of project and run the docker commands below.
+
+```
+FROM openjdk:latest
+
+EXPOSE 8080
+COPY . /usr/app
+WORKDIR /usr/app
+
+RUN ./mvnw package
+
+CMD java -jar ./target/docker-example-1.1.3.jar
+```
+
+`docker build -t spring-example-project .`
+
+`docker run -p 8000:8000 spring-example-project`
+
+## Part 1.14
+
+First clone or download [this repo](https://github.com/docker-hy/rails-example-project).
+
+There is no official Docker image for Ruby version 2.3.0. Ruby version is defined by default in the Gemfile so you should change it to correspond the image you are using.
+
+Place the Dockerfile in the root of project and run the docker commands below.
+
+```
+FROM ruby:2.6
+
+EXPOSE 3000
+
+COPY . /usr/app
+WORKDIR /usr/app
+
+RUN apt-get update && apt-get install -y nodejs
+
+ENV SECRET_KEY_BASE = lollero
+
+RUN bundle install
+RUN rails db:migrate RAILS_ENV=production
+RUN rake assets:precompile
+
+CMD rails s -e production
+```
+
+`docker build -t spring-example-project .`
+
+`docker run -p 8000:8000 spring-example-project`
