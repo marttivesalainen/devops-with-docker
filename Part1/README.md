@@ -140,9 +140,18 @@ First clone or download [this repo](https://github.com/docker-hy/backend-example
 Place the Dockerfile in the root of project and run
 
 ```
-docker build -t backend-example-docker .
-docker run -p 8000:8000 -v $PWD/logs.txt:/usr/app/logs.txt backend-example-docker
+FROM node:alpine
+
+EXPOSE 8000
+WORKDIR /usr/app
+COPY . .
+
+CMD npm start
 ```
+
+docker build -t backend-example-docker .
+
+docker run -p 8000:8000 -v \$PWD/logs.txt:/usr/app/logs.txt backend-example-docker
 
 ## Part 1.12
 
@@ -150,14 +159,44 @@ See [Dockerfile and README](https://github.com/marttivesalainen/devops-with-dock
 
 First clone or download [this](https://github.com/docker-hy/backend-example-docker) and [that](https://github.com/docker-hy/frontend-example-docker) and follow the installing instructions from both projects.
 
-Place the Dockerfiles (backend & frontend) in the roots of corresponding projects and run:
+Place the Dockerfiles (backend & frontend) in the roots of corresponding projects, then run the docker magic below.
+
+Backend Dockerfile
 
 ```
-docker build -t backend-example-docker .
-docker run -p 8000:8000 -v $PWD/logs.txt:/usr/app/logs.txt backend-example-docker
+FROM node:alpine
+
+EXPOSE 8000
+WORKDIR /usr/app
+COPY . .
+
+ENV FRONT_URL=http://localhost:5000
+
+CMD npm start
 ```
 
+Frontend Dockerfile
+
 ```
-docker build -t frontend-example-docker .
-docker run -p 5000:5000 frontend-example-docker
+FROM node:alpine
+
+EXPOSE 5000
+WORKDIR /usr/app
+COPY . .
+
+ENV API_URL=http://localhost:8000
+
+CMD npm start
 ```
+
+Backend
+
+`docker build -t backend-example-docker .`
+
+`docker run -p 8000:8000 -v $PWD/logs.txt:/usr/app/logs.txt backend-example-docker`
+
+Frontend
+
+`docker build -t frontend-example-docker .`
+
+`docker run -p 5000:5000 frontend-example-docker`
