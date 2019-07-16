@@ -2,6 +2,6 @@ FROM node:alpine
 
 EXPOSE 5000
 WORKDIR /usr/app
-COPY . .
+COPY ./frontend .
 
 CMD npm start

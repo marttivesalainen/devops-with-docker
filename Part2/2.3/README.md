@@ -1,9 +1,5 @@
 ## Part 2.3
 
-For the sake of clarity and because we are only interested in Dockerfiles and docker-compose.yml, I didn't want to include application repositories in my commits. If you want to see the application running you must manually clone and install [frontend](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part2/2.3/frontend) and [backend](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part2/2.3/backend). Just follow the instructions in both READMEs in those subdirectories.
+For the sake of clarity I didn't want to mess this repository with anything else than docker or docker-compose related stuff. Usually I would place Dockerfiles in the root of an application rather than use aberrant file naming like Dockerfile-frontend etc...
 
-After you have set up the project, run `docker-compose up` in the project root.
-
-OR
-
-In project root run `(cd backend && git clone https://github.com/docker-hy/backend-example-docker.git . && npm install) && (cd frontend && git clone https://github.com/docker-hy/frontend-example-docker.git . && npm install) && docker-compose up`
+If you want to see the frontend and backend in action, install them by running `(git clone https://github.com/docker-hy/backend-example-docker.git backend && cd backend && npm install) && (git clone https://github.com/docker-hy/frontend-example-docker.git frontend && cd frontend && npm install)` and run `docker-compose up`

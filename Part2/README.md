@@ -34,19 +34,24 @@ Run `docker-compose up` and open [http://localhost](http://localhost) in your br
 
 ## Part 2.3
 
-Dockerfiles, docker-compose.yml and instructions [here](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part2/2.3)
+Dockerfiles, docker-compose.yml and instructions [here](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part2/2.3). Somehow I got distracted with this task so the project structure isn't quite neatiestestest. Anyway, I'm not going to fix it since it works.
 
 ```
 version: '3.5'
 
 services:
   frontend:
-    build: ./frontend
+    build:
+      context: .
+      dockerfile: Dockerfile-frontend
     ports:
       - 5000:5000
 
   backend:
-    build: ./backend
+    build:
+      context: .
+      dockerfile: Dockerfile-backend
     ports:
       - 8000:8000
+
 ```
