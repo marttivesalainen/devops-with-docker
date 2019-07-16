@@ -34,7 +34,7 @@ Run `docker-compose up` and open [http://localhost](http://localhost) in your br
 
 ## Part 2.3
 
-Dockerfiles, docker-compose.yml and instructions here
+Dockerfiles, docker-compose.yml and instructions [here](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part2/2.3)
 
 ```
 version: '3.5'
