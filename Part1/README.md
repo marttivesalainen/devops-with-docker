@@ -259,7 +259,7 @@ CMD rails s -e production
 
 ## Part 1.15
 
-Docker image is available in [this public repository](https://cloud.docker.com/repository/docker/marttivesalainen/hello-world-exercise).
+Docker image is available in [this public repository](https://hub.docker.com/r/marttivesalainen/hello-world-exercise).
 
 In a nutshell, the image clones a [simple hello world application](https://github.com/marttivesalainen/node-hello-world), install its depedencies, exposes port 3000 by default and run the application.
 
@@ -281,3 +281,30 @@ CMD ["node", "/usr/app/index.js"]
 ## Part 1.16
 
 [https://martti-heroku-example.herokuapp.com/](https://martti-heroku-example.herokuapp.com/)
+
+## Part 1.17
+
+Docker image is available in [this public repository](https://hub.docker.com/r/marttivesalainen/programming-environment-exercise).
+
+The image contains following tools for developers use
+
+- git
+- nvm (for controlling multiple node versions)
+- Node.js (latest version is installed by default)
+- npm (package manager for Node)
+
+```
+FROM ubuntu:latest
+
+RUN apt-get update && apt-get install -y curl git
+RUN curl --silent -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash \
+  && export NVM_DIR="$HOME/.nvm" \
+  && [ -s "$NVM_DIR/nvm.sh" ] \
+  && . "$NVM_DIR/nvm.sh" \
+  && nvm --version \
+  && nvm install node \
+  && echo "Using latest version of Node $(node --version)" \
+  && echo "Using latest version of NPM $(npm --version)"
+```
+
+Run `docker run -it marttivesalainen/programming-environment-exercise`
