@@ -1,33 +1,12 @@
-# Simple clicker app
+## Part 1.14
 
-# Installation
+First clone or download [this repo](https://github.com/docker-hy/rails-example-project).
 
-Make sure you have a JavaScript runtime such as node installed.
+There is no official Docker image for Ruby version 2.3.0. Ruby version is defined by default in the Gemfile so you should change it to correspond the image you are using.
 
-## If you do not have ruby installed
+Place the Dockerfile in the root of project and run
 
-Install ruby version 2.6.0 with [rbenv](https://github.com/rbenv/rbenv).
-
-Install bundler with `gem install bundler`
-
-## If you already have ruby and bundler installed
-
-run `bundle install` to install all dependencies specified in the Gemfile
-
-## For development version
-
-Run migrations with `rails db:migrate`
-
-Run `rails s` to start the project in development mode
-
-## For production version
-
-Run migrations with `rails db:migrate RAILS_ENV=production`
-
-Precompile your assets with `rake assets:precompile`
-
-Run `rails s -e production` to start the project in production mode
-
-(To get error output use `RAILS_LOG_TO_STDOUT=true rails s -e production`)
-
-### The application by default runs in port 3000
+```
+docker build -t spring-example-project .
+docker run -p 8000:8000 spring-example-project
+```

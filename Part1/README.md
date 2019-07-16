@@ -256,3 +256,24 @@ CMD rails s -e production
 `docker build -t spring-example-project .`
 
 `docker run -p 8000:8000 spring-example-project`
+
+## Part 1.15
+
+Docker image is available in [this public repository](https://cloud.docker.com/repository/docker/marttivesalainen/hello-world-exercise).
+
+In a nutshell, the image clones a [simple hello world application](https://github.com/marttivesalainen/node-hello-world), install its depedencies, exposes port 3000 by default and run the application.
+
+Simply run `docker run -p 3000:3000 marttivesalainen/hello-world-exercise` and open [http://localhost:3000](http://localhost:3000) in your browser.
+
+```
+FROM node:latest
+
+WORKDIR /usr/app
+
+EXPOSE 3000
+ENV PORT 3000
+
+RUN git clone https://github.com/marttivesalainen/node-hello-world.git . && npm install
+
+CMD ["node", "/usr/app/index.js"]
+```
