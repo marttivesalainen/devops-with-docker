@@ -55,3 +55,9 @@ services:
       - 8000:8000
 
 ```
+
+## Part 2.4
+
+[Clone this directory](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part2/2.4)
+
+And run `docker-compose up -d --scale compute=3`
