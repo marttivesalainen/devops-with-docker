@@ -219,3 +219,49 @@ services:
     volumes:
       - ./database:/var/lib/postgresql/data
 ```
+
+## Part 2.10
+
+[docker-compose.yml](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part2/2.10)
+
+```
+version: '3.5'
+
+services:
+  frontend:
+    build: ./frontend
+    restart: always
+
+  backend:
+    build: ./backend
+    restart: always
+    environment:
+      DB_USERNAME: ankka
+      DB_PASSWORD: lapainen
+      DB_HOST: db
+      REDIS: redis
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    links:
+      - frontend
+      - backend
+    restart: always
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: ankka
+      POSTGRES_PASSWORD: lapainen
+    volumes:
+      - ./database:/var/lib/postgresql/data
+
+  redis:
+    image: redis
+```
