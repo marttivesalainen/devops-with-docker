@@ -64,7 +64,7 @@ And run `docker-compose up -d --scale compute=3`
 
 ## Part 2.5
 
-[docker-compose.yml here](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part2/2.5)
+[docker-compose.yml](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part2/2.5)
 
 ```
 version: '3.5'
@@ -81,5 +81,38 @@ services:
 
   redis:
     image: redis
+
+```
+
+## Part 2.6
+
+[docker-compose.yml](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part2/2.6)
+
+```
+version: '3.5'
+
+services:
+  backend:
+    build: .
+    ports:
+      - 8000:8000
+    environment:
+      DB_USERNAME: ankka
+      DB_PASSWORD: lapainen
+      DB_HOST: db
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ankka
+      POSTGRES_PASSWORD: lapainen
+    volumes:
+      - database:/var/lib/postgresql/data
+
+volumes:
+  database:
 
 ```
