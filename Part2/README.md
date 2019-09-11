@@ -116,3 +116,40 @@ volumes:
   database:
 
 ```
+
+## Part 2.7
+
+[docker-compose.yml](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part2/2.7)
+
+```
+version: '3.5'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - 5000:5000
+    depends_on:
+      - training
+    volumes:
+      - model:/src/model
+
+  frontend:
+    build: ./frontend
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+
+  training:
+    build: ./training
+    volumes:
+      - model:/src/model
+      - data:/src/data
+      - imgs:/src/imgs
+
+volumes:
+  model:
+  data:
+  imgs:
+```
