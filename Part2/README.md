@@ -153,3 +153,34 @@ volumes:
   data:
   imgs:
 ```
+
+## Part 2.8
+
+[docker-compose.yml & nginx.confg](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part2/2.8)
+
+docker-compose.yml:
+
+```
+version: '3.5'
+
+services:
+  frontend:
+    build: ./frontend
+    restart: always
+
+  backend:
+    build: ./backend
+    restart: always
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    links:
+      - frontend
+      - backend
+    restart: always
+
+```
