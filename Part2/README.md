@@ -58,6 +58,28 @@ services:
 
 ## Part 2.4
 
-[Clone this directory](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part2/2.4)
+[Project files](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part2/2.4)
 
 And run `docker-compose up -d --scale compute=3`
+
+## Part 2.5
+
+[docker-compose.yml here](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part2/2.5)
+
+```
+version: '3.5'
+
+services:
+  backend:
+    links:
+      - redis
+    build: .
+    ports:
+      - 8000:8000
+    environment:
+      - REDIS=redis
+
+  redis:
+    image: redis
+
+```
