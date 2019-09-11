@@ -1,20 +1,26 @@
 version: '3.5'
 
 services:
-  backend:
-    build: .
+  frontend:
+    build: ./frontend
+    restart: always
     ports:
-      - 8000:8000
+      - 5000:5000
+
+  backend:
+    build: ./backend
+    restart: always
     environment:
       DB_USERNAME: ankka
       DB_PASSWORD: lapainen
       DB_HOST: db
     depends_on:
       - db
+    ports:
+      - 8000:8000
 
   db:
-    image: postgres
-    restart: unless-stopped
+    image: postgres:latest
     environment:
       POSTGRES_USER: ankka
       POSTGRES_PASSWORD: lapainen

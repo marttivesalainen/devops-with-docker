@@ -184,3 +184,38 @@ services:
     restart: always
 
 ```
+
+## Part 2.9
+
+[docker-compose.yml](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part2/2.9)
+
+```
+version: '3.5'
+
+services:
+  frontend:
+    build: ./frontend
+    restart: always
+    ports:
+      - 5000:5000
+
+  backend:
+    build: ./backend
+    restart: always
+    environment:
+      DB_USERNAME: ankka
+      DB_PASSWORD: lapainen
+      DB_HOST: db
+    depends_on:
+      - db
+    ports:
+      - 8000:8000
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: ankka
+      POSTGRES_PASSWORD: lapainen
+    volumes:
+      - ./database:/var/lib/postgresql/data
+```
