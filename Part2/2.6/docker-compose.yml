@@ -1,0 +1,25 @@
+version: '3.5'
+
+services:
+  backend:
+    build: .
+    ports:
+      - 8000:8000
+    environment:
+      DB_USERNAME: ankka
+      DB_PASSWORD: lapainen
+      DB_HOST: db
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ankka
+      POSTGRES_PASSWORD: lapainen
+    volumes:
+      - database:/var/lib/postgresql/data
+
+volumes:
+  database:

@@ -2,8 +2,6 @@ version: '3.5'
 
 services:
   backend:
-    links:
-      - redis
     build: .
     ports:
       - 8000:8000
