@@ -97,7 +97,7 @@ backend             latest              53c442d65f1a        43 minutes ago      
 
 ## 3.5
 
-[Dockerfiles and documentation](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part3/3.5)
+[Dockerfile and documentation](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part3/3.5)
 
 ```
 FROM node:alpine AS builder
