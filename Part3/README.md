@@ -82,3 +82,15 @@ EXPOSE 8000
 
 CMD npm start
 ```
+
+## 3.4
+
+[Dockerfiles and documentation](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part3/3.4)
+
+```
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+backend             alpine              762917142e6e        3 minutes ago       152MB <- Alpine
+frontend            alpine              762917142e6e        3 minutes ago       152MB <- Alpine
+frontend            latest              8fa7998bdd6c        39 minutes ago      440MB <- Ubuntu
+backend             latest              53c442d65f1a        43 minutes ago      337MB <- Ubuntu
+```
