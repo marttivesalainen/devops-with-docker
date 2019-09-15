@@ -94,3 +94,19 @@ frontend            alpine              762917142e6e        3 minutes ago       
 frontend            latest              8fa7998bdd6c        39 minutes ago      440MB <- Ubuntu
 backend             latest              53c442d65f1a        43 minutes ago      337MB <- Ubuntu
 ```
+
+## 3.5
+
+[Dockerfiles and documentation](https://github.com/marttivesalainen/devops-with-docker/tree/master/Part3/3.5)
+
+```
+FROM node:alpine AS builder
+COPY . /usr/app
+WORKDIR /usr/app
+RUN npm install && npm run build
+
+FROM nginx
+COPY --from=builder /usr/app/dist /usr/share/nginx/html
+
+EXPOSE 5000
+```
