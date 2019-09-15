@@ -8,6 +8,7 @@ RUN apt-get update && \
   python3-crypto python3-requests python3-lxml \
   php-cli php-curl php-xml php-bcmath python3-pip && \
   pip3 install --user --upgrade yle-dl && \
+  rm -rf /var/lib/apt/lists/* && \
   export PATH=$PATH:$HOME/.local/bin
 
 WORKDIR /app

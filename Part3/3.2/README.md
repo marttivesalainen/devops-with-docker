@@ -1,3 +1,3 @@
 ## 3.2
 
-Run `docker run -v $PWD:/app yle-dl [URL]` to download
+Run `docker run -v "$(pwd):/app" yle-dl [URL]`
