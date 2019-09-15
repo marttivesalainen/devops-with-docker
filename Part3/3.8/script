@@ -1,0 +1,6 @@
+#!/bin/bash
+
+git clone $1 $2
+docker build -t $3/$2 ./$2
+docker login
+docker push $3/$2
